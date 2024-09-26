@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beneficiary Registration</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(rgba(76, 161, 175, 0.7), rgba(196, 224, 229, 0.7)), url('/api/placeholder/1920/1080') no-repeat center center;
+      background-size: cover;
+    }
+
+    .container {
+      display: flex;
+      width: 80%;
+      max-width: 1200px;
+      height: 80vh;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container {
+      width: 50%;
+      padding: 40px;
+      font-size: 15px;
+      overflow-y: auto;
+    }
+
+    .image-container {
+      width: 50%;
+      background: url('https://st4.depositphotos.com/12522196/37915/i/450/depositphotos_379153058-stock-photo-collage-photos-donations-poor-people.jpg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+      color: white;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .header {
+      margin-bottom: 30px;
+    }
+
+    .header h2 {
+      font-size: 32px;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      color: #7f8c8d;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-group i {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+      color: #3498db;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 40px;
+      border: 1px solid #bdc3c7;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      background-color: #3498db;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+
+    .login-link a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+
+    .features {
+      margin-top: 30px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #ecf0f1;
+    }
+
+    .feature i {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .form-container, .image-container {
+        width: 100%;
+      }
+
+      .image-container {
+        min-height: 300px;
+        order: -1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="form-container">
+      <div class="header">
+        <h2>Beneficiary Registration</h2>
+        <p>Join our community and start receiving support</p>
+      </div>
+      <form method="POST" action="{{ url_for('beneficiary_registration') }}">
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" name="username" class="form-control" placeholder="Beneficiary Name" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-phone"></i>
+          <input type="tel" id="contact" name="contact" class="form-control" placeholder="Contact Number" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email Address" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="registerPassword" name="password" class="form-control" placeholder="Password" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="confirmRegisterPassword" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+        </div>
+        <div class="form-group">
+          <i class="fas fa-city"></i>
+          <input type="text" id="cityField" name="cityField" class="form-control" placeholder="City" required>
+        </div>
+        <button type="submit" class="btn">Register</button>
+      </form>
+      <div class="login-link">
+        Already have an account? <a style="font-size: 15px" href="{{ url_for('beneficiary_login') }}">Login</a>
+      </div>
+    </div>
+    <div class="image-container">
+      <div class="features">
+        <div class="feature">
+          <i class="fas fa-utensils"></i>
+          <span>Access Food Donations</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-users"></i>
+          <span>Join Our Community</span>
+        </div>
+        <div class="feature">
+          <i class="fas fa-hand-holding-heart"></i>
+          <span>Receive Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

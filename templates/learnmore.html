@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More | Food Donation Platform</title>
+    
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <!-- FontAwesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            background-image: url('static/images/learnmore1.jpeg');
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #333;
+            border: none;
+            border-radius: 0;
+            margin-bottom: 0;
+        }
+        .navbar-brand, .navbar-nav li a {
+            color: #fff !important;
+        }
+        .navbar-brand:hover, .navbar-nav li a:hover {
+            color: #f39c12 !important;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: url('static/images/Designer.jpeg') no-repeat center center;
+            background-size: cover;
+            color: rgb(247, 247, 248);
+            padding: 80px 15px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 20px;
+        }
+
+        .btn-back {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .btn-back:hover {
+            background-color: #555;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 60px 15px;
+        }
+
+        .content h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .info-box {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .info-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #333;
+        }
+
+        .info-box p {
+            font-size: 16px;
+            color: #666;
+            text-align: center;
+        }
+
+        .info-box img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #ffffff;
+            padding: 20px 15px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ff4000;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .content h2 {
+                font-size: 28px;
+            }
+
+            .info-box h3 {
+                font-size: 20px;
+            }
+
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .page-header p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Food Donation</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <h1>Learn More</h1>
+        <p>Explore how we help feed the needy and how you can make a difference.</p>
+        <a href="/" class="btn-back">Back to Home</a>
+    </div>
+</section>
+
+<!-- Content Section -->
+<section class="content">
+    <div class="container">
+        <h2>Why Food Donation Matters</h2>
+        <p>India is home to a significant number of underprivileged people who struggle with food insecurity. Despite the country’s substantial food production, many still face hunger. Our platform aims to bridge this gap by connecting food donors with those in need.</p>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="info-box">
+                    <img src="static/images/restaurant.jpg" alt="Restaurants Donating Food">
+                    <h3>Restaurants' Role</h3>
+                    <p>Restaurants can list their surplus food on our platform. This not only helps reduce food waste but also ensures that excess food reaches those who need it most.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-box">
+                    <img src="static/images/orphanages.jpg" alt="Orphanages Receiving Food">
+                    <h3>Orphanages' Needs</h3>
+                    <p>Orphanages  can find available food donations through our platform, allowing them to arrange pickups or deliveries to meet their food requirements.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="info-box">
+                    <img src="static/images/community-support.jpg" alt="Community Support">
+                    <h3>Community Impact</h3>
+                    <p>Our platform fosters community support by connecting donors with recipients, reducing waste, and helping those in need.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Food Donation Platform. <a href="/contact">Contact Us</a></p>
+</footer>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

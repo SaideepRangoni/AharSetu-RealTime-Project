@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Donating!</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-image: linear-gradient(to right,rgba(206, 180, 122, 0.612), rgba(222, 141, 36, 0.324)), url('/static/images/landingpage_user.png');
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .thank-you-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .btn-primary {
+            background-color: #28a745;
+            border-color: #28a745;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-primary:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+
+        .heart-icon {
+            font-size: 4rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="thank-you-container">
+        <i class="fas fa-heart heart-icon"></i>
+        <h1>Thank You for Donating!</h1>
+        <p>Your generosity has brought food to those in need. Your kindness helps fight hunger and makes the world a better place!</p>
+        <a href="/landingpage_user" class="btn btn-primary">Return to Home</a>
+    </div>
+
+    <!-- FontAwesome and Bootstrap JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

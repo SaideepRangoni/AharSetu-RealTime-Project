@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficiary Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            background-image: url('static/images/beneficiary_landing.webp');
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-size: cover; 
+        }
+        .bg {
+            background-image: linear-gradient(to right,rgba(206, 180, 122, 0.612), rgba(222, 141, 36, 0.324)), url('');
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+        .navbar {
+            background-color: rgba(205, 168, 134, 0.7);
+        }
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+        .content {
+            height: calc(100% - 56px);
+            display: flex;
+            align-items: center;
+        }
+        .profile-card {
+            background-color: rgba(193, 220, 241, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        h1 {
+            color: #faf9f3;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="/landingpage_beneficiary">Food Donation Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landingpage_beneficiary">Home</a> <!-- Home Link -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="content container">
+            <div class="profile-card">
+                <h1>Beneficiary Profile</h1>
+                <p><strong>Username:</strong> {{ beneficiary.username }}</p>
+                <p><strong>Contact:</strong> {{ beneficiary.contact }}</p>
+                <p><strong>Email:</strong> {{ beneficiary.email }}</p>
+                <p><strong>City:</strong> {{ beneficiary.city }}</p>
+
+                <h2>Update Password</h2>
+                <form method="POST" action="{{ url_for('update_beneficiary_password') }}">
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="current_password" placeholder="Current Password" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="new_password" placeholder="New Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Update Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

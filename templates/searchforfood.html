@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search for Food Donations</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('static/images/beneficiary_landing.webp');
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-size: cover; 
+        }
+        .bg {
+            background-image: linear-gradient(to right, rgba(206, 180, 122, 0.612), rgba(222, 141, 36, 0.324)), url('/static/images/LANDINGPAGEIMAGE.jpg');
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .navbar {
+            background-color: rgba(205, 168, 134, 0.7);
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+        }
+
+        .content {
+            height: calc(100% - 56px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .food-posts {
+            margin-top: 2rem;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .food-post {
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .post-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .view-details-btn, .reserve-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 48%;
+        }
+
+        .reserve-btn {
+            background-color: #28a745;
+        }
+
+        .view-details-btn:hover, .reserve-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Modal Styles */
+        .modal-header {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">Food Donation Platform</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/landingpage_beneficiary">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search_for_food">Search for Food</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="search-container text-center">
+                <h1>Search for Food Donations</h1>
+                <form method="POST" id="searchForm" class="d-flex justify-content-center align-items-center mt-5">
+                    <div class="input-group" style="width: 400px;">
+                        <select id="cityInput" name="city" class="form-control form-control-lg" required>
+                            <option value="" disabled selected>Select your city</option>
+                            <option value="Siddipet">Siddipet</option>
+                            <option value="Warangal">Warangal</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Karimnagar">Karimnagar</option>
+                        </select>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary btn-lg">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="resultsContainer" class="food-posts"></div>
+        </div>
+    </div>
+
+    <!-- Modal for Viewing Details -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailsModalLabel">Food Post Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Donor:</strong> <span id="modalUsername"></span></p>
+                    <p><strong>Contact:</strong> <span id="modalContact"></span></p>
+                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            var city = document.getElementById("cityInput").value;
+
+            fetch('/search_for_food', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `city=${encodeURIComponent(city)}`
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error("Failed to fetch data.");
+                }
+            })
+            .then(data => {
+                var resultsContainer = document.getElementById("resultsContainer");
+                resultsContainer.innerHTML = ''; // Clear any previous results
+
+                if (data.food_posts && data.food_posts.length > 0) {
+                    data.food_posts.forEach(post => {
+                        var postElement = document.createElement("div");
+                        postElement.className = "food-post";
+                        postElement.innerHTML = `
+                            <h4>${post.food_details}</h4>
+                            <p><strong>Available for:</strong> ${post.people_served} people</p>
+                            <p><strong>City:</strong> ${post.city}</p>
+                            <div class="post-buttons">
+                                <button class="view-details-btn" onclick="viewDetails(${post.id})">View Details</button>
+                                <button class="reserve-btn" onclick="reserveFood(${post.id})">Reserve</button>
+                            </div>
+                        `;
+                        resultsContainer.appendChild(postElement);
+                    });
+                } else {
+                    resultsContainer.innerHTML = "<p>No food posts available in this city.</p>";
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                var resultsContainer = document.getElementById("resultsContainer");
+                resultsContainer.innerHTML = "<p>Failed to search food posts. Please try again.</p>";
+            });
+        });
+
+        function viewDetails(postId) {
+            fetch(`/view_details/${postId}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("modalUsername").textContent = data.username;
+                    document.getElementById("modalContact").textContent = data.contact;
+                    document.getElementById("modalEmail").textContent = data.email;
+                    $('#detailsModal').modal('show'); // Show the modal
+                })
+                .catch(error => {
+                    console.error('Error fetching details:', error);
+                });
+        }
+
+        function reserveFood(postId) {
+    fetch(`/reserve/${postId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Food reserved successfully! A confirmation email has been sent to the donor.");
+                window.location.href = "/search_for_food";
+            } else {
+                alert("Failed to reserve food. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error('Error reserving food:', error);
+            alert("An error occurred while reserving food. Please try again later.");
+        });
+}
+    </script>
+</body>
+</html>

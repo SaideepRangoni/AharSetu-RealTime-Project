@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Donations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('static/images/top-view-food-donation-box_23-2148733850.avif') no-repeat center center fixed;
+            background-size: cover; /* Makes the background image cover the entire area */
+        } /* Added missing brace here */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+            border: 2px solid rgba(255, 255, 255, 0.8); /* Light border */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .food-posts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .food-post {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .food-post:hover {
+            transform: translateY(-5px);
+        }
+        .food-post h3 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+        .food-post p {
+            color: #6c757d;
+            margin: 5px 0;
+        }
+        .delete-btn {
+            display: inline-block;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+        .back-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+        .no-posts {
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Food Posts in the Last 24 Hours</h2>
+        
+        <div class="food-posts-container">
+            {% for post in food_posts %}
+            <div class="food-post">
+                <h3>{{ post.food_details }}</h3>
+                <p><strong>City:</strong> {{ post.city }}</p>
+                <p><strong>Serves:</strong> {{ post.people_served }} people</p>
+                <p><strong>Notes:</strong> {{ post.additional_notes }}</p>
+                <form method="POST" action="{{ url_for('delete_post', post_id=post.id) }}">
+                    <button type="submit" class="delete-btn">Remove Post</button>
+                </form>
+            </div>
+            {% else %}
+            <p class="no-posts">No food posts in the last 24 hours.</p>
+            {% endfor %}
+        </div>
+        
+        <a href="{{ url_for('landingpage_user') }}" class="back-btn">Go Back</a>
+    </div>
+</body>
+</html>

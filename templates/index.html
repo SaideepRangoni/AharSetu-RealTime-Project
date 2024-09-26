@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Donation Platform</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+    <!-- FontAwesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        /* General Styles */
+        body, html {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            height: 100%;
+        }
+
+        /* Background image with gradient overlay */
+        body{
+            background-image: linear-gradient(
+                rgba(240, 236, 236, 0.5), 
+                rgba(244, 238, 238, 0.5)
+            ), url('https://media.istockphoto.com/id/1457738274/photo/unrecognizable-woman-hands-out-food-donations-during-charity-drive.jpg?s=612x612&w=0&k=20&c=6GjDAHu02Epgu19Zwlc7-YSxFsMmiPZWFfZTU5S2a5I=');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100%;
+            color: white;
+        }
+
+        /* Header and Navbar */
+        .navbar {
+            background-color: #6acae5;
+            border: none;
+            border-radius: 0;
+            margin-bottom: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        /* Left-Aligned Brand */
+        .navbar-brand-left {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        /* Right-Aligned Horizontal Menu Items */
+        .navbar-nav {
+            color: #fff;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-nav li {
+            display: inline;
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar-nav a {
+            text-decoration: none;
+            padding: 10px 15px;/* Smooth transition on hover */
+        }
+
+        /* Hover Effect: Changes text color when hovering */
+        .navbar-nav a:hover {
+            color: #2bf62bd5;
+            text-decoration: none; /* Change to a yellowish color when hovering */
+        }
+
+        /* Optional: Make sure the brand on the left also has white color */
+        .navbar-brand-left {
+            color: white;
+        }
+
+        .navbar-brand-left:hover {
+            color: #4225e4d2; 
+            text-decoration: none;/* Same hover effect for the brand */
+        }
+
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hero-section p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .hero-section button {
+            padding: 12px 30px;
+            font-size: 20px;
+            background-color: #ff4000;
+            border: none;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .hero-section button:hover {
+            background-color: #e03900;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 60px 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            text-align: center;
+        }
+
+        .features h2 {
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #333;
+        }
+
+        .feature-box {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .feature-box i {
+            font-size: 50px;
+            color: #ff4000;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature-box p {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ff4000;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        headera{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section with Menu and Left-Aligned Brand -->
+    <div class="navbar navbar-inverse">
+        <a class="navbar-brand-left">Ahar Setu</a>
+        <ul class="navbar-nav">
+            <li><a style="color: white;" href="/about">About Us</a></li>
+            <li><a style="color: white;" href="/contact">Contact Us</a></li>
+            <li><a style="color: white;" href="/user_login">Donor Login</a></li>
+            <li><a style="color: white;" href="/beneficiary_login">Beneficiary Login</a></li>
+            <li><a style="color: white;" href="/blog">Blogs</a></li>
+            <li><a style="color: white;" href="/feedback">Feedback</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section with Text on Top of Gradient Background -->
+    <section class="hero-section">
+        <h1>Help Reduce Food Waste, Feed the Needy</h1>
+        <p>Join us in connecting restaurants and orphanages to reduce food waste and help the needy.</p>
+        <button onclick="window.location.href='/learnmore'">Learn More</button>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="row">
+                <div class="col-sm-4 feature-box">
+                    <i class="fa fa-cutlery" aria-hidden="true"></i>
+                    <h4>Restaurants Donate Food</h4>
+                    <p>Restaurants can list their available food donations through our platform.</p>
+                </div>
+                <div class="col-sm-4 feature-box">
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <h4>Orphanages Receive Food</h4>
+                    <p>Orphanages and the needy can find nearby food donations and arrange pickups.</p>
+                </div>
+                <div class="col-sm-4 feature-box">
+                    <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                    <h4>Helping the Needy</h4>
+                    <p>Our platform fosters connection between donors and recipients, helping to reduce food wastage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Food Donation Platform. <a href="/contact">Contact Us</a></p>
+    </footer>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>

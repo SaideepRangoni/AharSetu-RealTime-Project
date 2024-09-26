@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Donation Platform - Post Availability</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- FontAwesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .bg {
+            background-image: linear-gradient(to right,rgba(206, 180, 122, 0.612), rgba(222, 141, 36, 0.324)), url('/static/images/landingpage_user.png');
+            height: 100vh;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Rest of the CSS remains the same */
+
+        .navbar {
+            background-color: rgba(205, 168, 134, 0.7);
+        }
+
+        .navbar-brand, .nav-link {
+            color: #fff !important;
+            transition: color 0.3s ease;
+            font-size: 20px;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #1fc327f0 !important;
+        }
+
+        .content {
+            height: calc(100% - 56px);
+            display: flex;
+            align-items: center;
+        }
+
+        .left-content {
+            color: #fff;
+            font-size: 22px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centers vertically */
+            align-items: center;     /* Centers horizontally */
+            margin-top: 75px;       /* Adds space from the top */
+        }
+
+
+        .right-content {
+            background-color: rgba(193, 220, 241, 0.9);
+            padding: 2rem;
+            font-size: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #faf9f3;
+        }
+
+        .form-control {
+            margin-bottom: 1rem;
+            font-size: 20px;
+        }
+
+        .btn-primary {
+            background-color: #3373dad7;
+            border-color: #07a0ff;
+            color: #fffdfd;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #5ae000;
+            border-color: #8ae628;
+        }
+    </style>
+</head>
+<body>
+    <!-- The rest of the HTML remains the same -->
+    <div class="bg">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">Food Donation Dashboard</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/donations">My Donations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content container">
+            <div class="row w-100">
+                <div class="col-md-6 left-content">
+                    <h1>Share Your Kindness</h1>
+                    <p>Your generous food donations can make a significant difference in someone's life. Let's work together to reduce hunger and build a stronger community.</p>
+                </div>
+                <div class="col-md-6 right-content">
+                    <h2 class="mb-4">Post Your Food Availability</h2>
+                    <form method="POST" action="{{ url_for('post_availability') }}">
+                        <input type="text" class="form-control" name="food_details" placeholder="Enter food details (e.g., type of food, packaging)" required>
+                        <input type="number" class="form-control" name="people_served" placeholder="Food available for how many people?" required>
+                        <select class="form-control" name="city" required>
+                            <option value="" disabled selected>Select your city</option>
+                            <option value="Siddipet">Siddipet</option>
+                            <option value="Warangal">Warangal</option>
+                            <option value="Karimnagar">Karimnagar</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                        </select>
+                        <textarea class="form-control" name="additional_notes" placeholder="Additional notes (optional)" rows="4"></textarea>
+                        <button type="submit" class="btn btn-primary btn-block">Submit Availability</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts remain the same -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            var now = new Date();
+            var year = now.getFullYear();
+            var month = (now.getMonth() + 1).toString().padStart(2, '0');
+            var day = now.getDate().toString().padStart(2, '0');
+            var hour = now.getHours().toString().padStart(2, '0');
+            var minute = now.getMinutes().toString().padStart(2, '0');
+            var second = now.getSeconds().toString().padStart(2, '0');
+            var availability = `${year}-${month}-${day}T${hour}:${minute}:${second}`;
+            document.getElementById("availability").value = availability;
+        });
+    </script>
+</body>
+</html>

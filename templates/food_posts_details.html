@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Post Details</title>
+</head>
+<body>
+
+    <h1>Food Post Details</h1>
+    <h2>Food Information</h2>
+    <p><strong>Food Details:</strong> {{ food_details }}</p>
+    <p><strong>Availability:</strong> {{ availability }}</p>
+    <p><strong>City:</strong> {{ post_city }}</p>
+    <p><strong>People Served:</strong> {{ people_served }}</p>
+    <p><strong>Additional Notes:</strong> {{ additional_notes }}</p>
+
+    <h2>Donor Information</h2>
+    <p><strong>Donor Name:</strong> {{ username }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+    <p><strong>Contact:</strong> {{ contact }}</p>
+    <p><strong>Address:</strong> {{ address }}, {{ user_city }}, {{ state }}, {{ zip_code }}</p>
+
+    <h2>Location</h2>
+    <p><strong>Location (Geo Coordinates):</strong> {{ location }}</p>
+
+    <!-- Claim Form -->
+    <h2>Claim This Food Post</h2>
+    <form action="{{ url_for('claim_food_post', post_id=post_id) }}" method="post">
+        <button type="submit">Claim</button>
+    </form>
+
+</body>
+</html>

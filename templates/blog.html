@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Blog - Food Donation Project</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(rgba(208, 200, 200, 0.8), rgba(255, 255, 255, 0.8)), url('https://img.freepik.com/free-photo/box-with-food-being-prepared-donation_23-2148613168.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .content-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .graph-container {
+            grid-column: span 2;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .button {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 20px auto;
+            font-size: 14px;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s;
+            width: 150px; /* Fixed width */
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="section">
+            <h1>Our Ahar Setu Project</h1>
+            <p>Welcome to our Ahar Setu Project, where we connect food donors with those in need. Our mission is to reduce food wastage while alleviating hunger in our communities.</p>
+        </div>
+        
+        <div class="section">
+            <h2>Why Food Donation Matters</h2>
+            <p>Every year, millions of tons of food are wasted, while many people go hungry. By donating food, you help make a difference in someone's life and contribute to a more sustainable future.</p>
+        </div>
+        
+        <div class="section">
+            <h2>How It Works</h2>
+            <ol>
+                <li>Donors can post available food items on our platform.</li>
+                <li>Beneficiaries can browse available donations by location.</li>
+                <li>Once a beneficiary claims a post, they receive a confirmation email.</li>
+                <li>Donated food is picked up and delivered to those in need.</li>
+            </ol>
+        </div>
+        
+        <div class="graph-container section">
+            <h3>Global Statistics on Hunger and Food Wastage</h3>
+            <img src="static/images/pov-food-waste-infographic-final505x526.jpg" alt="Hunger, Poverty, and Food Wastage Statistics">
+        </div>
+        
+        <div class="section">
+            <h2>Join Us!</h2>
+            <p>Get involved today! Whether you want to donate food or help distribute it, your contribution can make a huge impact.</p>
+            <p>For more information, contact us at <a href="mailto:saideeprangoni634@gmail.com">Aharsetu@gmail.com.com</a>.</p>
+        </div>
+    </div>
+    <a href="{{ url_for('home') }}" class="button">Back to Homepage</a>
+</body>
+</html>
