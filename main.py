@@ -128,6 +128,7 @@ def landingpage_beneficiary():
 
 
 
+
 @app.route('/search_for_food', methods=['GET', 'POST'])
 def search_for_food():
     if 'beneficiary_id' not in session:
@@ -143,7 +144,7 @@ def search_for_food():
                 twenty_four_hours_ago = datetime.now() - timedelta(hours=24)
 
                 query = """
-                SELECT id, food_details, city, people_served
+                SELECT id, food_details, city, people_served, additional_notes
                 FROM food_posts
                 WHERE city = %s AND created_at > %s
                 """
@@ -155,7 +156,8 @@ def search_for_food():
                         "id": post[0],
                         "food_details": post[1],
                         "city": post[2],
-                        "people_served": post[3]
+                        "people_served": post[3],
+                        "additional_notes": post[4]  # Include additional notes
                     }
                     for post in food_posts
                 ]
