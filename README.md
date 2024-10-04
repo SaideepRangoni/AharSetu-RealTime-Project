@@ -47,6 +47,8 @@
 ├── main.py                # Main Flask application file
 └── README.md              # This file
 
+```
+
 ## Prerequisites
 
 - **Python 3.x**
@@ -59,16 +61,20 @@
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/aharsetu.git
+   ```
 2. Navigate to the project directory:
    ```bash
    cd aharsetu
+   ```
 3. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
+   ```
 4. Set up your database and configure the connection in main.py.
 5. Run the Flask application:
    ```bash
    python main.py
+   ```
 6. Open your browser and go to http://127.0.0.1:5000/ to view the application.
 
 ## Technologies Used
