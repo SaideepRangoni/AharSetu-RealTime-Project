@@ -98,5 +98,5 @@ I have also written an article on Medium, highlighting the goals, development jo
 ## Contact Us
 For any inquiries or support, feel free to reach out:
 
-- **Email:** yourname@gmail.com
-- **LinkedIn:** [Your LinkedIn Profile](#)
+- **Email:** saideeprangoni634@gmail.com
+- **LinkedIn:** [Your LinkedIn Profile](https://www.linkedin.com/in/saideep-rangoni-54abb9300/)
