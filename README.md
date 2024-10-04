@@ -91,9 +91,10 @@ The platform underwent comprehensive user testing and peer review. The following
 
 ## Video Demonstration
 I have created a video showcasing the full functionality of the **AharSetu** platform, including the donor registration process, food post creation, beneficiary search and reservation, and notifications.
+[video link](https://youtu.be/Y0LKuk64Ysg)
 
 ## Articles
-I have also written an article on Medium, highlighting the goals, development journey, and technical challenges of **AharSetu**. You can find it [here](#).
+I have also written an article on Medium, highlighting the goals, development journey, and technical challenges of **AharSetu**. You can find it [Article link](https://medium.com/@saideeprangoni/developing-aharsetu-a-next-gen-solution-to-link-excess-food-with-hungry-hearts-in-real-time-2dd003db4346).
 
 ## Contact Us
 For any inquiries or support, feel free to reach out:
